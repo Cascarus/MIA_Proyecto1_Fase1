@@ -1,0 +1,1040 @@
+Terminales no usados en la gramática
+
+   decimal
+   mas
+   por
+   division
+   potencia
+   parentA
+   parentC
+   llaveA
+   llaveC
+   corcheA
+   corcheC
+   exclama
+   puntoComa
+   coma
+   simple
+
+
+Gramática
+
+    0 $accept: INICIO $end
+
+    1 INICIO: COMANDOS_T
+
+    2 COMANDOS_T: tk_MKd MKdisk
+    3           | tk_RMd RMdisk
+    4           | tk_Fd Fdisk
+    5           | tk_Mount MOUNT
+    6           | tk_UnMount UNMOUNT
+    7           | tk_Rep REPORTES
+    8           | tk_Exec SCRIPT
+
+    9 MKdisk: LISTA_MKD
+
+   10 LISTA_MKD: LISTA_MKD OPCIONES_MKD
+   11          | OPCIONES_MKD
+
+   12 OPCIONES_MKD: tk_Size igual numero
+   13             | tk_Fit igual OPCIONES_FIT
+   14             | tk_Unit igual id
+   15             | tk_Path igual ruta
+   16             | tk_Path igual cadena
+
+   17 OPCIONES_FIT: tk_Bf
+   18             | tk_Ff
+   19             | tk_Wf
+
+   20 RMdisk: tk_Path igual ruta
+   21       | tk_Path igual cadena
+
+   22 Fdisk: LISTA_FD
+
+   23 LISTA_FD: LISTA_FD OPCIONES_FD
+   24         | OPCIONES_FD
+
+   25 OPCIONES_FD: tk_Size igual numero
+   26            | tk_Unit igual id
+   27            | tk_Path igual ruta
+   28            | tk_Path igual cadena
+   29            | tk_Type igual id
+   30            | tk_Fit igual OPCIONES_FIT
+   31            | tk_Delete igual OPCIONES_DELETE
+   32            | tk_Name igual cadena
+   33            | tk_Name igual id
+   34            | tk_Add igual VAL_NUM
+
+   35 OPCIONES_DELETE: tk_Fast
+   36                | tk_Full
+
+   37 MOUNT: LISTA_MOUNT
+
+   38 LISTA_MOUNT: LISTA_MOUNT OPCIONES_MOUNT
+   39            | OPCIONES_MOUNT
+
+   40 OPCIONES_MOUNT: tk_Path igual ruta
+   41               | tk_Path igual cadena
+   42               | tk_Name igual id
+
+   43 UNMOUNT: tk_ID igual id
+
+   44 REPORTES: LISTA_REPORTES
+
+   45 LISTA_REPORTES: REPORTES OPCIONES_REPOTES
+   46               | OPCIONES_REPOTES
+
+   47 OPCIONES_REPOTES: tk_Name igual id
+   48                 | tk_Path igual ruta
+   49                 | tk_Path igual cadena
+   50                 | tk_ID igual id
+
+   51 SCRIPT: tk_Path igual ruta
+   52       | tk_Path igual cadena
+
+   53 VAL_NUM: numero
+   54        | menos numero
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+error (256)
+tk_Size (258) 12 25
+tk_Fit (259) 13 30
+tk_Unit (260) 14 26
+tk_Path (261) 15 16 20 21 27 28 40 41 48 49 51 52
+tk_Type (262) 29
+tk_Delete (263) 31
+tk_Name (264) 32 33 42 47
+tk_Add (265) 34
+tk_ID (266) 43 50
+tk_MKd (267) 2
+tk_RMd (268) 3
+tk_Fd (269) 4
+tk_Mount (270) 5
+tk_UnMount (271) 6
+tk_Rep (272) 7
+tk_Exec (273) 8
+tk_Bf (274) 17
+tk_Ff (275) 18
+tk_Wf (276) 19
+tk_Fast (277) 35
+tk_Full (278) 36
+numero (279) 12 25 53 54
+decimal (280)
+cadena (281) 16 21 28 32 41 49 52
+id (282) 14 26 29 33 42 43 47 50
+ruta (283) 15 20 27 40 48 51
+mas (284)
+menos (285) 54
+por (286)
+division (287)
+potencia (288)
+igual (289) 12 13 14 15 16 20 21 25 26 27 28 29 30 31 32 33 34 40 41
+    42 43 47 48 49 50 51 52
+parentA (290)
+parentC (291)
+llaveA (292)
+llaveC (293)
+corcheA (294)
+corcheC (295)
+exclama (296)
+puntoComa (297)
+coma (298)
+simple (299)
+UMINUS (300)
+
+
+No terminales con las reglas donde aparecen
+
+$accept (46)
+    en la izquierda: 0
+INICIO (47)
+    en la izquierda: 1, en la derecha: 0
+COMANDOS_T (48)
+    en la izquierda: 2 3 4 5 6 7 8, en la derecha: 1
+MKdisk (49)
+    en la izquierda: 9, en la derecha: 2
+LISTA_MKD (50)
+    en la izquierda: 10 11, en la derecha: 9 10
+OPCIONES_MKD (51)
+    en la izquierda: 12 13 14 15 16, en la derecha: 10 11
+OPCIONES_FIT (52)
+    en la izquierda: 17 18 19, en la derecha: 13 30
+RMdisk (53)
+    en la izquierda: 20 21, en la derecha: 3
+Fdisk (54)
+    en la izquierda: 22, en la derecha: 4
+LISTA_FD (55)
+    en la izquierda: 23 24, en la derecha: 22 23
+OPCIONES_FD (56)
+    en la izquierda: 25 26 27 28 29 30 31 32 33 34, en la derecha:
+    23 24
+OPCIONES_DELETE (57)
+    en la izquierda: 35 36, en la derecha: 31
+MOUNT (58)
+    en la izquierda: 37, en la derecha: 5
+LISTA_MOUNT (59)
+    en la izquierda: 38 39, en la derecha: 37 38
+OPCIONES_MOUNT (60)
+    en la izquierda: 40 41 42, en la derecha: 38 39
+UNMOUNT (61)
+    en la izquierda: 43, en la derecha: 6
+REPORTES (62)
+    en la izquierda: 44, en la derecha: 7 45
+LISTA_REPORTES (63)
+    en la izquierda: 45 46, en la derecha: 44
+OPCIONES_REPOTES (64)
+    en la izquierda: 47 48 49 50, en la derecha: 45 46
+SCRIPT (65)
+    en la izquierda: 51 52, en la derecha: 8
+VAL_NUM (66)
+    en la izquierda: 53 54, en la derecha: 34
+
+
+Estado 0
+
+    0 $accept: . INICIO $end
+
+    tk_MKd      desplazar e ir al estado 1
+    tk_RMd      desplazar e ir al estado 2
+    tk_Fd       desplazar e ir al estado 3
+    tk_Mount    desplazar e ir al estado 4
+    tk_UnMount  desplazar e ir al estado 5
+    tk_Rep      desplazar e ir al estado 6
+    tk_Exec     desplazar e ir al estado 7
+
+    INICIO      ir al estado 8
+    COMANDOS_T  ir al estado 9
+
+
+Estado 1
+
+    2 COMANDOS_T: tk_MKd . MKdisk
+
+    tk_Size  desplazar e ir al estado 10
+    tk_Fit   desplazar e ir al estado 11
+    tk_Unit  desplazar e ir al estado 12
+    tk_Path  desplazar e ir al estado 13
+
+    MKdisk        ir al estado 14
+    LISTA_MKD     ir al estado 15
+    OPCIONES_MKD  ir al estado 16
+
+
+Estado 2
+
+    3 COMANDOS_T: tk_RMd . RMdisk
+
+    tk_Path  desplazar e ir al estado 17
+
+    RMdisk  ir al estado 18
+
+
+Estado 3
+
+    4 COMANDOS_T: tk_Fd . Fdisk
+
+    tk_Size    desplazar e ir al estado 19
+    tk_Fit     desplazar e ir al estado 20
+    tk_Unit    desplazar e ir al estado 21
+    tk_Path    desplazar e ir al estado 22
+    tk_Type    desplazar e ir al estado 23
+    tk_Delete  desplazar e ir al estado 24
+    tk_Name    desplazar e ir al estado 25
+    tk_Add     desplazar e ir al estado 26
+
+    Fdisk        ir al estado 27
+    LISTA_FD     ir al estado 28
+    OPCIONES_FD  ir al estado 29
+
+
+Estado 4
+
+    5 COMANDOS_T: tk_Mount . MOUNT
+
+    tk_Path  desplazar e ir al estado 30
+    tk_Name  desplazar e ir al estado 31
+
+    MOUNT           ir al estado 32
+    LISTA_MOUNT     ir al estado 33
+    OPCIONES_MOUNT  ir al estado 34
+
+
+Estado 5
+
+    6 COMANDOS_T: tk_UnMount . UNMOUNT
+
+    tk_ID  desplazar e ir al estado 35
+
+    UNMOUNT  ir al estado 36
+
+
+Estado 6
+
+    7 COMANDOS_T: tk_Rep . REPORTES
+
+    tk_Path  desplazar e ir al estado 37
+    tk_Name  desplazar e ir al estado 38
+    tk_ID    desplazar e ir al estado 39
+
+    REPORTES          ir al estado 40
+    LISTA_REPORTES    ir al estado 41
+    OPCIONES_REPOTES  ir al estado 42
+
+
+Estado 7
+
+    8 COMANDOS_T: tk_Exec . SCRIPT
+
+    tk_Path  desplazar e ir al estado 43
+
+    SCRIPT  ir al estado 44
+
+
+Estado 8
+
+    0 $accept: INICIO . $end
+
+    $end  desplazar e ir al estado 45
+
+
+Estado 9
+
+    1 INICIO: COMANDOS_T .
+
+    $default  reduce usando la regla 1 (INICIO)
+
+
+Estado 10
+
+   12 OPCIONES_MKD: tk_Size . igual numero
+
+    igual  desplazar e ir al estado 46
+
+
+Estado 11
+
+   13 OPCIONES_MKD: tk_Fit . igual OPCIONES_FIT
+
+    igual  desplazar e ir al estado 47
+
+
+Estado 12
+
+   14 OPCIONES_MKD: tk_Unit . igual id
+
+    igual  desplazar e ir al estado 48
+
+
+Estado 13
+
+   15 OPCIONES_MKD: tk_Path . igual ruta
+   16             | tk_Path . igual cadena
+
+    igual  desplazar e ir al estado 49
+
+
+Estado 14
+
+    2 COMANDOS_T: tk_MKd MKdisk .
+
+    $default  reduce usando la regla 2 (COMANDOS_T)
+
+
+Estado 15
+
+    9 MKdisk: LISTA_MKD .
+   10 LISTA_MKD: LISTA_MKD . OPCIONES_MKD
+
+    tk_Size  desplazar e ir al estado 10
+    tk_Fit   desplazar e ir al estado 11
+    tk_Unit  desplazar e ir al estado 12
+    tk_Path  desplazar e ir al estado 13
+
+    $default  reduce usando la regla 9 (MKdisk)
+
+    OPCIONES_MKD  ir al estado 50
+
+
+Estado 16
+
+   11 LISTA_MKD: OPCIONES_MKD .
+
+    $default  reduce usando la regla 11 (LISTA_MKD)
+
+
+Estado 17
+
+   20 RMdisk: tk_Path . igual ruta
+   21       | tk_Path . igual cadena
+
+    igual  desplazar e ir al estado 51
+
+
+Estado 18
+
+    3 COMANDOS_T: tk_RMd RMdisk .
+
+    $default  reduce usando la regla 3 (COMANDOS_T)
+
+
+Estado 19
+
+   25 OPCIONES_FD: tk_Size . igual numero
+
+    igual  desplazar e ir al estado 52
+
+
+Estado 20
+
+   30 OPCIONES_FD: tk_Fit . igual OPCIONES_FIT
+
+    igual  desplazar e ir al estado 53
+
+
+Estado 21
+
+   26 OPCIONES_FD: tk_Unit . igual id
+
+    igual  desplazar e ir al estado 54
+
+
+Estado 22
+
+   27 OPCIONES_FD: tk_Path . igual ruta
+   28            | tk_Path . igual cadena
+
+    igual  desplazar e ir al estado 55
+
+
+Estado 23
+
+   29 OPCIONES_FD: tk_Type . igual id
+
+    igual  desplazar e ir al estado 56
+
+
+Estado 24
+
+   31 OPCIONES_FD: tk_Delete . igual OPCIONES_DELETE
+
+    igual  desplazar e ir al estado 57
+
+
+Estado 25
+
+   32 OPCIONES_FD: tk_Name . igual cadena
+   33            | tk_Name . igual id
+
+    igual  desplazar e ir al estado 58
+
+
+Estado 26
+
+   34 OPCIONES_FD: tk_Add . igual VAL_NUM
+
+    igual  desplazar e ir al estado 59
+
+
+Estado 27
+
+    4 COMANDOS_T: tk_Fd Fdisk .
+
+    $default  reduce usando la regla 4 (COMANDOS_T)
+
+
+Estado 28
+
+   22 Fdisk: LISTA_FD .
+   23 LISTA_FD: LISTA_FD . OPCIONES_FD
+
+    tk_Size    desplazar e ir al estado 19
+    tk_Fit     desplazar e ir al estado 20
+    tk_Unit    desplazar e ir al estado 21
+    tk_Path    desplazar e ir al estado 22
+    tk_Type    desplazar e ir al estado 23
+    tk_Delete  desplazar e ir al estado 24
+    tk_Name    desplazar e ir al estado 25
+    tk_Add     desplazar e ir al estado 26
+
+    $default  reduce usando la regla 22 (Fdisk)
+
+    OPCIONES_FD  ir al estado 60
+
+
+Estado 29
+
+   24 LISTA_FD: OPCIONES_FD .
+
+    $default  reduce usando la regla 24 (LISTA_FD)
+
+
+Estado 30
+
+   40 OPCIONES_MOUNT: tk_Path . igual ruta
+   41               | tk_Path . igual cadena
+
+    igual  desplazar e ir al estado 61
+
+
+Estado 31
+
+   42 OPCIONES_MOUNT: tk_Name . igual id
+
+    igual  desplazar e ir al estado 62
+
+
+Estado 32
+
+    5 COMANDOS_T: tk_Mount MOUNT .
+
+    $default  reduce usando la regla 5 (COMANDOS_T)
+
+
+Estado 33
+
+   37 MOUNT: LISTA_MOUNT .
+   38 LISTA_MOUNT: LISTA_MOUNT . OPCIONES_MOUNT
+
+    tk_Path  desplazar e ir al estado 30
+    tk_Name  desplazar e ir al estado 31
+
+    $default  reduce usando la regla 37 (MOUNT)
+
+    OPCIONES_MOUNT  ir al estado 63
+
+
+Estado 34
+
+   39 LISTA_MOUNT: OPCIONES_MOUNT .
+
+    $default  reduce usando la regla 39 (LISTA_MOUNT)
+
+
+Estado 35
+
+   43 UNMOUNT: tk_ID . igual id
+
+    igual  desplazar e ir al estado 64
+
+
+Estado 36
+
+    6 COMANDOS_T: tk_UnMount UNMOUNT .
+
+    $default  reduce usando la regla 6 (COMANDOS_T)
+
+
+Estado 37
+
+   48 OPCIONES_REPOTES: tk_Path . igual ruta
+   49                 | tk_Path . igual cadena
+
+    igual  desplazar e ir al estado 65
+
+
+Estado 38
+
+   47 OPCIONES_REPOTES: tk_Name . igual id
+
+    igual  desplazar e ir al estado 66
+
+
+Estado 39
+
+   50 OPCIONES_REPOTES: tk_ID . igual id
+
+    igual  desplazar e ir al estado 67
+
+
+Estado 40
+
+    7 COMANDOS_T: tk_Rep REPORTES .
+   45 LISTA_REPORTES: REPORTES . OPCIONES_REPOTES
+
+    tk_Path  desplazar e ir al estado 37
+    tk_Name  desplazar e ir al estado 38
+    tk_ID    desplazar e ir al estado 39
+
+    $default  reduce usando la regla 7 (COMANDOS_T)
+
+    OPCIONES_REPOTES  ir al estado 68
+
+
+Estado 41
+
+   44 REPORTES: LISTA_REPORTES .
+
+    $default  reduce usando la regla 44 (REPORTES)
+
+
+Estado 42
+
+   46 LISTA_REPORTES: OPCIONES_REPOTES .
+
+    $default  reduce usando la regla 46 (LISTA_REPORTES)
+
+
+Estado 43
+
+   51 SCRIPT: tk_Path . igual ruta
+   52       | tk_Path . igual cadena
+
+    igual  desplazar e ir al estado 69
+
+
+Estado 44
+
+    8 COMANDOS_T: tk_Exec SCRIPT .
+
+    $default  reduce usando la regla 8 (COMANDOS_T)
+
+
+Estado 45
+
+    0 $accept: INICIO $end .
+
+    $default  aceptar
+
+
+Estado 46
+
+   12 OPCIONES_MKD: tk_Size igual . numero
+
+    numero  desplazar e ir al estado 70
+
+
+Estado 47
+
+   13 OPCIONES_MKD: tk_Fit igual . OPCIONES_FIT
+
+    tk_Bf  desplazar e ir al estado 71
+    tk_Ff  desplazar e ir al estado 72
+    tk_Wf  desplazar e ir al estado 73
+
+    OPCIONES_FIT  ir al estado 74
+
+
+Estado 48
+
+   14 OPCIONES_MKD: tk_Unit igual . id
+
+    id  desplazar e ir al estado 75
+
+
+Estado 49
+
+   15 OPCIONES_MKD: tk_Path igual . ruta
+   16             | tk_Path igual . cadena
+
+    cadena  desplazar e ir al estado 76
+    ruta    desplazar e ir al estado 77
+
+
+Estado 50
+
+   10 LISTA_MKD: LISTA_MKD OPCIONES_MKD .
+
+    $default  reduce usando la regla 10 (LISTA_MKD)
+
+
+Estado 51
+
+   20 RMdisk: tk_Path igual . ruta
+   21       | tk_Path igual . cadena
+
+    cadena  desplazar e ir al estado 78
+    ruta    desplazar e ir al estado 79
+
+
+Estado 52
+
+   25 OPCIONES_FD: tk_Size igual . numero
+
+    numero  desplazar e ir al estado 80
+
+
+Estado 53
+
+   30 OPCIONES_FD: tk_Fit igual . OPCIONES_FIT
+
+    tk_Bf  desplazar e ir al estado 71
+    tk_Ff  desplazar e ir al estado 72
+    tk_Wf  desplazar e ir al estado 73
+
+    OPCIONES_FIT  ir al estado 81
+
+
+Estado 54
+
+   26 OPCIONES_FD: tk_Unit igual . id
+
+    id  desplazar e ir al estado 82
+
+
+Estado 55
+
+   27 OPCIONES_FD: tk_Path igual . ruta
+   28            | tk_Path igual . cadena
+
+    cadena  desplazar e ir al estado 83
+    ruta    desplazar e ir al estado 84
+
+
+Estado 56
+
+   29 OPCIONES_FD: tk_Type igual . id
+
+    id  desplazar e ir al estado 85
+
+
+Estado 57
+
+   31 OPCIONES_FD: tk_Delete igual . OPCIONES_DELETE
+
+    tk_Fast  desplazar e ir al estado 86
+    tk_Full  desplazar e ir al estado 87
+
+    OPCIONES_DELETE  ir al estado 88
+
+
+Estado 58
+
+   32 OPCIONES_FD: tk_Name igual . cadena
+   33            | tk_Name igual . id
+
+    cadena  desplazar e ir al estado 89
+    id      desplazar e ir al estado 90
+
+
+Estado 59
+
+   34 OPCIONES_FD: tk_Add igual . VAL_NUM
+
+    numero  desplazar e ir al estado 91
+    menos   desplazar e ir al estado 92
+
+    VAL_NUM  ir al estado 93
+
+
+Estado 60
+
+   23 LISTA_FD: LISTA_FD OPCIONES_FD .
+
+    $default  reduce usando la regla 23 (LISTA_FD)
+
+
+Estado 61
+
+   40 OPCIONES_MOUNT: tk_Path igual . ruta
+   41               | tk_Path igual . cadena
+
+    cadena  desplazar e ir al estado 94
+    ruta    desplazar e ir al estado 95
+
+
+Estado 62
+
+   42 OPCIONES_MOUNT: tk_Name igual . id
+
+    id  desplazar e ir al estado 96
+
+
+Estado 63
+
+   38 LISTA_MOUNT: LISTA_MOUNT OPCIONES_MOUNT .
+
+    $default  reduce usando la regla 38 (LISTA_MOUNT)
+
+
+Estado 64
+
+   43 UNMOUNT: tk_ID igual . id
+
+    id  desplazar e ir al estado 97
+
+
+Estado 65
+
+   48 OPCIONES_REPOTES: tk_Path igual . ruta
+   49                 | tk_Path igual . cadena
+
+    cadena  desplazar e ir al estado 98
+    ruta    desplazar e ir al estado 99
+
+
+Estado 66
+
+   47 OPCIONES_REPOTES: tk_Name igual . id
+
+    id  desplazar e ir al estado 100
+
+
+Estado 67
+
+   50 OPCIONES_REPOTES: tk_ID igual . id
+
+    id  desplazar e ir al estado 101
+
+
+Estado 68
+
+   45 LISTA_REPORTES: REPORTES OPCIONES_REPOTES .
+
+    $default  reduce usando la regla 45 (LISTA_REPORTES)
+
+
+Estado 69
+
+   51 SCRIPT: tk_Path igual . ruta
+   52       | tk_Path igual . cadena
+
+    cadena  desplazar e ir al estado 102
+    ruta    desplazar e ir al estado 103
+
+
+Estado 70
+
+   12 OPCIONES_MKD: tk_Size igual numero .
+
+    $default  reduce usando la regla 12 (OPCIONES_MKD)
+
+
+Estado 71
+
+   17 OPCIONES_FIT: tk_Bf .
+
+    $default  reduce usando la regla 17 (OPCIONES_FIT)
+
+
+Estado 72
+
+   18 OPCIONES_FIT: tk_Ff .
+
+    $default  reduce usando la regla 18 (OPCIONES_FIT)
+
+
+Estado 73
+
+   19 OPCIONES_FIT: tk_Wf .
+
+    $default  reduce usando la regla 19 (OPCIONES_FIT)
+
+
+Estado 74
+
+   13 OPCIONES_MKD: tk_Fit igual OPCIONES_FIT .
+
+    $default  reduce usando la regla 13 (OPCIONES_MKD)
+
+
+Estado 75
+
+   14 OPCIONES_MKD: tk_Unit igual id .
+
+    $default  reduce usando la regla 14 (OPCIONES_MKD)
+
+
+Estado 76
+
+   16 OPCIONES_MKD: tk_Path igual cadena .
+
+    $default  reduce usando la regla 16 (OPCIONES_MKD)
+
+
+Estado 77
+
+   15 OPCIONES_MKD: tk_Path igual ruta .
+
+    $default  reduce usando la regla 15 (OPCIONES_MKD)
+
+
+Estado 78
+
+   21 RMdisk: tk_Path igual cadena .
+
+    $default  reduce usando la regla 21 (RMdisk)
+
+
+Estado 79
+
+   20 RMdisk: tk_Path igual ruta .
+
+    $default  reduce usando la regla 20 (RMdisk)
+
+
+Estado 80
+
+   25 OPCIONES_FD: tk_Size igual numero .
+
+    $default  reduce usando la regla 25 (OPCIONES_FD)
+
+
+Estado 81
+
+   30 OPCIONES_FD: tk_Fit igual OPCIONES_FIT .
+
+    $default  reduce usando la regla 30 (OPCIONES_FD)
+
+
+Estado 82
+
+   26 OPCIONES_FD: tk_Unit igual id .
+
+    $default  reduce usando la regla 26 (OPCIONES_FD)
+
+
+Estado 83
+
+   28 OPCIONES_FD: tk_Path igual cadena .
+
+    $default  reduce usando la regla 28 (OPCIONES_FD)
+
+
+Estado 84
+
+   27 OPCIONES_FD: tk_Path igual ruta .
+
+    $default  reduce usando la regla 27 (OPCIONES_FD)
+
+
+Estado 85
+
+   29 OPCIONES_FD: tk_Type igual id .
+
+    $default  reduce usando la regla 29 (OPCIONES_FD)
+
+
+Estado 86
+
+   35 OPCIONES_DELETE: tk_Fast .
+
+    $default  reduce usando la regla 35 (OPCIONES_DELETE)
+
+
+Estado 87
+
+   36 OPCIONES_DELETE: tk_Full .
+
+    $default  reduce usando la regla 36 (OPCIONES_DELETE)
+
+
+Estado 88
+
+   31 OPCIONES_FD: tk_Delete igual OPCIONES_DELETE .
+
+    $default  reduce usando la regla 31 (OPCIONES_FD)
+
+
+Estado 89
+
+   32 OPCIONES_FD: tk_Name igual cadena .
+
+    $default  reduce usando la regla 32 (OPCIONES_FD)
+
+
+Estado 90
+
+   33 OPCIONES_FD: tk_Name igual id .
+
+    $default  reduce usando la regla 33 (OPCIONES_FD)
+
+
+Estado 91
+
+   53 VAL_NUM: numero .
+
+    $default  reduce usando la regla 53 (VAL_NUM)
+
+
+Estado 92
+
+   54 VAL_NUM: menos . numero
+
+    numero  desplazar e ir al estado 104
+
+
+Estado 93
+
+   34 OPCIONES_FD: tk_Add igual VAL_NUM .
+
+    $default  reduce usando la regla 34 (OPCIONES_FD)
+
+
+Estado 94
+
+   41 OPCIONES_MOUNT: tk_Path igual cadena .
+
+    $default  reduce usando la regla 41 (OPCIONES_MOUNT)
+
+
+Estado 95
+
+   40 OPCIONES_MOUNT: tk_Path igual ruta .
+
+    $default  reduce usando la regla 40 (OPCIONES_MOUNT)
+
+
+Estado 96
+
+   42 OPCIONES_MOUNT: tk_Name igual id .
+
+    $default  reduce usando la regla 42 (OPCIONES_MOUNT)
+
+
+Estado 97
+
+   43 UNMOUNT: tk_ID igual id .
+
+    $default  reduce usando la regla 43 (UNMOUNT)
+
+
+Estado 98
+
+   49 OPCIONES_REPOTES: tk_Path igual cadena .
+
+    $default  reduce usando la regla 49 (OPCIONES_REPOTES)
+
+
+Estado 99
+
+   48 OPCIONES_REPOTES: tk_Path igual ruta .
+
+    $default  reduce usando la regla 48 (OPCIONES_REPOTES)
+
+
+Estado 100
+
+   47 OPCIONES_REPOTES: tk_Name igual id .
+
+    $default  reduce usando la regla 47 (OPCIONES_REPOTES)
+
+
+Estado 101
+
+   50 OPCIONES_REPOTES: tk_ID igual id .
+
+    $default  reduce usando la regla 50 (OPCIONES_REPOTES)
+
+
+Estado 102
+
+   52 SCRIPT: tk_Path igual cadena .
+
+    $default  reduce usando la regla 52 (SCRIPT)
+
+
+Estado 103
+
+   51 SCRIPT: tk_Path igual ruta .
+
+    $default  reduce usando la regla 51 (SCRIPT)
+
+
+Estado 104
+
+   54 VAL_NUM: menos numero .
+
+    $default  reduce usando la regla 54 (VAL_NUM)
